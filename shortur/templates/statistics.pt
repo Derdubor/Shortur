@@ -1,0 +1,34 @@
+<html metal:use-macro="load:main.pt"> 
+    <div metal:fill-slot="content">
+        <h1>Statistikk</h1>
+        
+        <p>
+            Informasjon for kortadressen <a href="${request.route_url('lookup', key=shorturl.key)}">${shorturl.key}</a>, med totalt <strong>${shorturl.hits_total}</strong> treff.
+        </p>
+        
+        <section tal:condition="shorturl.hits">
+            <h2>
+                Visninger over tid
+            </h2>
+            
+            <table>
+                <tr>
+                    <th>
+                        Dato
+                    </th>
+                    <th>
+                        Visninger
+                    </th>
+                </tr>
+                <tr tal:repeat="day shorturl.hits">
+                    <td>
+                        ${day.date}
+                    </td>
+                    <td style="text-align: right;">
+                        ${day.hits}
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </div> 
+</html> 

@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+    <head>
+        <title>Shortur</title>
+        <link href='http://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            body
+            {
+                margin: 0;
+                padding: 0;
+                background: white;
+                font-family: arial;
+            }
+            
+            a {
+                color: #9E1B3C;
+            }
+            
+            header
+            {
+                background: #9E1B3C;
+                border-bottom: 3px solid #9FA394;
+                padding: 1em 2em;
+                color: #FBFCE5;
+            }
+            
+            header a
+            {
+                color: #FBFCE5;
+                text-decoration: none;          
+            }
+            
+            #container
+            {
+                border-top: 6px solid #FBFCE5;
+                padding: 1.5em;
+            }
+            
+            h1, h2
+            {
+                margin: 0;
+                padding: 0;
+                font-family: 'Pathway Gothic One', sans-serif;            
+            }
+            
+            #creationist-box
+            {
+                background: #FBFCE5;
+                margin-bottom: 2.0em;
+                padding: 0.5em;
+            }
+            
+            #creationist-box h2
+            {
+                margin-bottom: 1.0em;
+            }
+            
+            #creationist-box p
+            {
+                font-size: 1.6em;
+            }
+            
+            #creationist-box p.statistics-notice
+            {
+                font-size: 0.9em;
+                text-align: right;
+                padding-right: 0.2em;
+                margin-top: 3.0em;
+            }
+            
+            #main-page
+            {
+                text-align: center;
+                margin: auto;
+                width: 640px;
+            }
+            
+            #main-page h1
+            {
+                margin-bottom: 0.5em;
+            }
+            
+            #main-page form
+            {
+                margin-top: 1.0em;
+            }
+            
+            footer
+            {
+                margin-top: 5.0em;
+                font-size: 0.6em;
+                text-align: center;
+                color: #9FA394;
+            }
+            
+            input
+            {
+                font-size: 1.3em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="/">Shortur</a>
+            </h1>
+            
+            <p>
+                Make long stuff short. The inverse of what the rest of the Internet tries to sell you.
+            </p>
+        </header>
+        
+        <div id="container">
+            <div metal:define-slot="content"></div>
+        </div>
+        
+        <footer>
+            A small service hosted by <a href="http://www.derdubor.no/">derdubor.no</a> to shorten URLs for use in QR-codes. Please contact us at <a href="#">teknisk at derdubor.no</a> if you need assistance.
+        </footer>
+    </body>
+</html> 
