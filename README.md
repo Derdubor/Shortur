@@ -49,3 +49,6 @@ The --reload parameter will monitor the file system for changes and reload the a
 The application should now be available through localhost at: 
 
     http://localhost:6543/
+
+For production use we've gone the easiest way, the production.ini file will load the application at port 5000, and we let waitress serve all requests (there are no external dependencies at the current time, no static files) through a frontend server (Apache with mod_proxy, nginx, etc.). The main difference between development.ini and production.ini is that the latter does not load the pyramid debug toolbar.
+
