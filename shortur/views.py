@@ -56,27 +56,33 @@ def shortur_resolve(request):
     
 @view_config(route_name='statistics', renderer='templates/statistics.pt', accept='text/html')
 @view_config(route_name='statistics', renderer='json', accept='application/json')
+@view_config(route_name='statistics_alternative', renderer='json', accept='application/json')
 def shortur_statistics(request):
     response = {}
+    keys = request.matchdict['key'].split(",")
 
-    surl = DBSession.query(ShortURL).filter(
-        ShortURL.key == request.matchdict['key']
-    ).first()
+    surls = DBSession.query(ShortURL).filter(
+        ShortURL.key.in_(keys)
+    ).all()
     
-    if not surl:
+    if not surls:
         return HTTPNotFound()
     
-    response['shorturl'] = {
-        'key': surl.key,
-        'url': surl.url,
-        'hits': [],
-        'hits_total': surl.hits_total,
-    }
+    response['shorturl'] = {}
     
-    for hit in surl.hits:
-        response['shorturl']['hits'].append({
-            'date': str(hit.date),
-            'hits': hit.hits,
-        })
-        
+    for surl in surls:
+        if not surl.key in response['shorturl']:
+            response['shorturl'][surl.key] = {
+                'key': surl.key,
+                'url': surl.url,
+                'hits': [],
+                'hits_total': surl.hits_total,
+            }
+            
+        for hit in surl.hits:
+            response['shorturl'][surl.key]['hits'].append({
+                'date': str(hit.date),
+                'hits': hit.hits,
+            })
+    
     return response

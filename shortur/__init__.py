@@ -17,6 +17,7 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
     config.add_route('lookup', '/{key:\w+}')
-    config.add_route('statistics', '/{key}+')    
+    config.add_route('statistics', '/{key}+') 
+    config.add_route('statistics_alternative', '/s/{key}')    
     config.scan()
     return config.make_wsgi_app()
